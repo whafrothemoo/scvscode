@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:scvscode.helloWorld"
+    "onCommand:scvscode.start"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "scvscode.helloWorld",
-        "title": "Hello World"
+        "command": "scvscode.start",
+        "title": "scvscode: Start"
       }
     ]
   },

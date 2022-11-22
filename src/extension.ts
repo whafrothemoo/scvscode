@@ -1,26 +1,30 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as child_process from 'child_process';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "scvscode" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('scvscode.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from scvscode!');
+	let disposable = vscode.commands.registerCommand('scvscode.start', () => {
+		start();
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
+
+
+function start() {
+
+	const sclangOutputChannel = vscode.window.createOutputChannel('scvscode');
+
+	sclangOutputChannel.show(true);
+
+	// Not sure that scvscode is proper IDE as sclang -i
+	// TODO: reconsider IDE name
+	const sclang = child_process.spawn('sclang', ['-i', 'scvscode']);
+
+	sclang.stdout.on('data', data => {
+		sclangOutputChannel.appendLine(data.toString());
+	});	
+}
