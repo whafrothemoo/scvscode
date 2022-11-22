@@ -19,6 +19,12 @@
         "command": "scvscode.start",
         "title": "scvscode: Start"
       }
+    ],
+    "keybindings": [
+      {
+        "key": "ctrl+alt+s shift+s",
+        "command": "scvscode.start"
+      }
     ]
   },
   "scripts": {
