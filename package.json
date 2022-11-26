@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:scvscode.start"
+    "onCommand:scvscode.start",
+    "onCommand:scvscode.evalSelectionOrLne"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,12 +19,20 @@
       {
         "command": "scvscode.start",
         "title": "scvscode: Start"
+      },
+      {
+        "command": "scvscode.evalSelectionOrLne",
+        "title": "scvscode: Eval selection or line"
       }
     ],
     "keybindings": [
       {
         "key": "ctrl+alt+s shift+s",
         "command": "scvscode.start"
+      },
+      {
+        "key": "ctrl+alt+s shift+enter",
+        "command": "scvscode.evalSelectionOrLne"
       }
     ]
   },
